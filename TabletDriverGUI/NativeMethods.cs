@@ -73,5 +73,11 @@ namespace TabletDriverGUI
         //
         [DllImport("gdi32.dll")]
         public static extern bool DeleteObject(IntPtr hObject);
+
+        //
+        // Process Watchdog
+        //
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        internal static extern IntPtr GetForegroundWindow();
     }
 }
