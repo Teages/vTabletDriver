@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CommandLine.h"
+#include <functional>
 #include <string>
 
 
