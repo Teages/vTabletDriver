@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace TabletDriverGUI
@@ -78,23 +80,31 @@ namespace TabletDriverGUI
             // Set culture to en-US to force decimal format and etc.
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
 
+            var iconResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("TabletDriverGUI.Resources.AppIcon.ico");
+            var imgSource = new BitmapImage();
+            imgSource.BeginInit();
+            imgSource.StreamSource = iconResource;
+            imgSource.EndInit();
 
             // Create notify icon
-            notifyIcon = new System.Windows.Forms.NotifyIcon
+            notifyIcon = new System.Windows.Forms.NotifyIcon();
             {
                 // Icon
-                Icon = Properties.Resources.AppIcon,
+                Icon = imgSource;
 
                 // Menu items
-                ContextMenu = new System.Windows.Forms.ContextMenu(new System.Windows.Forms.MenuItem[]
+                ContextMenu = new ContextMenu
                 {
-                    new System.Windows.Forms.MenuItem("TabletDriverGUI " + Version),
-                    new System.Windows.Forms.MenuItem("Restart Driver", NotifyRestartDriver),
-                    new System.Windows.Forms.MenuItem("Show", NotifyShowWindow),
-                    new System.Windows.Forms.MenuItem("Exit", NotifyExit)
-                })
+                    ItemsSource = new System.Windows.Forms.MenuItem[]
+                    {
+                        new System.Windows.Forms.MenuItem("TabletDriverGUI " + Version),
+                        new System.Windows.Forms.MenuItem("Restart Driver", NotifyRestartDriver),
+                        new System.Windows.Forms.MenuItem("Show", NotifyShowWindow),
+                        new System.Windows.Forms.MenuItem("Exit", NotifyExit)
+                    }
+                };
             };
-            notifyIcon.ContextMenu.MenuItems[0].Enabled = false;
+            //notifyIcon.ContextMenu.MenuItems[0].Enabled = false;
 
             notifyIcon.Text = "";
             notifyIcon.MouseClick += NotifyIcon_Click;
