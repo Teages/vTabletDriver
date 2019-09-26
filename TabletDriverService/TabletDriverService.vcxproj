@@ -118,6 +118,8 @@ xcopy /C /Y "$(ProjectDir)config\*" "$(SolutionDir)TabletDriverGUI\bin\$(Configu
 
 xcopy /C /Y "$(ProjectDir)tools\*" "$(SolutionDir)TabletDriverGUI\bin\$(Configuration)\netcoreapp3.0\tools\*"
 
+xcopy /C /Y "$(ProjectDir)bin\$(Configuration)\*" "$(SolutionDir)TabletDriverGUI\bin\$(Configuration)\netcoreapp3.0\bin\*"
+
 xcopy /C /Y "$(SolutionDir)VMulti Installer GUI\bin\$(Configuration)\*" "$(SolutionDir)TabletDriverGUI\bin\$(Configuration)\netcoreapp3.0\bin\*"
 
 "$(ProgramW6432)\7-Zip\7z.exe" a -tzip "$(SolutionDir)TabletDriverGUI\bin\$(Configuration)\netcoreapp3.0\build.zip" "$(SolutionDir)TabletDriverGUI\bin\$(Configuration)\netcoreapp3.0\*"</Command>
