@@ -25,17 +25,16 @@ function Build {
         & xcopy /C /Y "$($cd)\VMulti Installer GUI\bin\*" "$($buildPath)\bin\*"
         
         Write-Host "Compressing files to '$($buildPath)\build.zip'..."
-        $pWow = Get-ChildItem Env:ProgramW6432
-        & "$($pWow)\7-Zip\7z.exe" a -tzip "$($buildPath)\build.zip" "$($buildPath)\*"
+        & "$($Env:ProgramW6432)\7-Zip\7z.exe" a -tzip "$($buildPath)\build.zip" "$($buildPath)\*"
     }
 }
 function MSBuild {
     param (
         [parameter(Mandatory=$true)]
-        [string] $path
+        [string] $path,
 
         [parameter(Mandatory=$false)]
-        [bool] $publish = $false
+        [bool] $publish = $false,
 
         [parameter(Mandatory=$false)]
         [bool] $isRelease = $false
