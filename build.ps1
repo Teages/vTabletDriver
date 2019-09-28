@@ -6,8 +6,7 @@ function Build {
     process {
         $location = Get-Location
         $currentDrive = Split-Path -qualifier $location.Path
-        $logicalDisk = Gwmi Win32_LogicalDisk -filter "DriveType = 4 AND DeviceID = '$currentDrive'"
-        $cd = $location.Path.Replace($currentDrive, $logicalDisk.ProviderName)
+        $cd = $location.Path.Replace($currentDrive, '')
         
         [bool] $release = $($buildType.ToLower() -eq "release") -or $($buildType.ToLower() -eq "r");
         $configName = $(if ($release) {'Release'} else {'Debug'})
@@ -23,9 +22,9 @@ function Build {
         }
 
         Write-Host "Copying all files to '$($buildPath)'..."
-        & xcopy /C /Y "$($cd)\TabletDriverGUI\bin\netcoreapp3.0\*" "$($buildPath)\*"
-        & xcopy /C /Y "$($cd)\TabletDriverService\bin\*" "$($buildPath)\bin\*"
-        & xcopy /C /Y "$($cd)\VMulti Installer GUI\bin\*" "$($buildPath)\bin\*"
+        Copy-Item -Path "$($cd)\TabletDriverGUI\bin\netcoreapp3.0\*" -Destination "$($buildPath)\"
+        Copy-Item -Path "$($cd)\TabletDriverService\bin\*" -Destination "$($buildPath)\bin\"
+        Copy-Item -Path "$($cd)\VMulti Installer GUI\bin\*" -Destination "$($buildPath)\bin\"
         
         Write-Host "Compressing files to '$($buildPath)\build.zip'..."
         & "$($Env:ProgramW6432)\7-Zip\7z.exe" a -tzip "$($buildPath)\build.zip" "$($buildPath)\*"
@@ -67,3 +66,4 @@ function MSBuild {
 
 $name = Read-Host -Prompt 'Input configuration type (release/debug)'
 Build $name
+Read-Host
