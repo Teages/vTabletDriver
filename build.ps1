@@ -18,6 +18,15 @@ function Build {
         else {
             MSBuild "$($cd)\TabletDriver.sln" 1 0
         }
+
+        Write-Host "Copying all files to '$($buildPath)'..."
+        & xcopy /C /Y "$($cd)\TabletDriverGUI\bin\netcoreapp3.0\*" "$($buildPath)\*"
+        & xcopy /C /Y "$($cd)\TabletDriverService\bin\*" "$($buildPath)\bin\*"
+        & xcopy /C /Y "$($cd)\VMulti Installer GUI\bin\*" "$($buildPath)\bin\*"
+        
+        Write-Host "Compressing files to '$($buildPath)\build.zip'..."
+        $pWow = Get-ChildItem Env:ProgramW6432
+        & "$($pWow)\7-Zip\7z.exe" a -tzip "$($buildPath)\build.zip" "$($buildPath)\*"
     }
 }
 function MSBuild {
