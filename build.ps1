@@ -15,16 +15,19 @@ function Build {
         Write-Host "Build path is '$($buildPath)'" -foregroundcolor white
 
         if ($release) {
-            MSBuild "$($cd)\TabletDriver.sln" 1 1
+            & MSBuild "$($cd)\TabletDriver.sln" 1 1
         }
         else {
-            MSBuild "$($cd)\TabletDriver.sln" 1 0
+            & MSBuild "$($cd)\TabletDriver.sln" 1 0
         }
 
+        Write-Host "Wiping '$($buildPath)'..."
+        Remove-Item -Path "$buildPath\*"
+        
         Write-Host "Copying all files to '$($buildPath)'..."
-        Copy-Item -Path "$($cd)\TabletDriverGUI\bin\netcoreapp3.0\*" -Destination "$($buildPath)\"
-        Copy-Item -Path "$($cd)\TabletDriverService\bin\*" -Destination "$($buildPath)\bin\"
-        Copy-Item -Path "$($cd)\VMulti Installer GUI\bin\*" -Destination "$($buildPath)\bin\"
+        Copy-Item -Path "$($cd)\TabletDriverGUI\bin\netcoreapp3.0\*" -Destination "$($buildPath)\" -Recurse
+        Copy-Item -Path "$($cd)\TabletDriverService\bin\*" -Destination "$($buildPath)\bin\" -Recurse
+        Copy-Item -Path "$($cd)\VMulti Installer GUI\bin\*" -Destination "$($buildPath)\bin\" -Recurse
         
         Write-Host "Compressing files to '$($buildPath)\build.zip'..."
         & "$($Env:ProgramW6432)\7-Zip\7z.exe" a -tzip "$($buildPath)\build.zip" "$($buildPath)\*"
@@ -43,20 +46,20 @@ function MSBuild {
     )
     process {
         $msb = 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe'
-        $args = $path
+        $args = "$($path)"
         
-        if ($isRelease) {
-            $args += " /p:Configuration=Release"
-        }
-        else {
-            $args += " /p:Configuration=Debug"
-        }
-
         if ($publish) {
             $args += " /t:Publish"
         }
         else {
             $args += " /t:Rebuild"
+        }
+
+        if ($isRelease) {
+            $args += " /p:Configuration=Release"
+        }
+        else {
+            $args += " /p:Configuration=Debug"
         }
 
         Write-Host "Build started..." -foregroundcolor green
