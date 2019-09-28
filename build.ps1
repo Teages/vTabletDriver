@@ -4,7 +4,10 @@ function Build {
         [string] $buildType 
     )
     process {
-        $cd = Get-Location
+        $location = Get-Location
+        $currentDrive = Split-Path -qualifier $location.Path
+        $logicalDisk = Gwmi Win32_LogicalDisk -filter "DriveType = 4 AND DeviceID = '$currentDrive'"
+        $cd = $location.Path.Replace($currentDrive, $logicalDisk.ProviderName)
         
         [bool] $release = $($buildType.ToLower() -eq "release") -or $($buildType.ToLower() -eq "r");
         $configName = $(if ($release) {'Release'} else {'Debug'})
