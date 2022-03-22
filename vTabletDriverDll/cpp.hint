@@ -1,0 +1,2 @@
+#define VTABLETDRIVERDLL_API __declspec(dllexport)
+#define VTABLETDRIVERDLL_API __declspec(dllimport)

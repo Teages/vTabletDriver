@@ -11,3 +11,5 @@ TabletDriverService/config/usersettings.cfg
 **/bin
 **/obj
 /Build
+
+/dist

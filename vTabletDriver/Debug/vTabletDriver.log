@@ -1,0 +1,56 @@
+﻿  HIDDevice.cpp
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2575,23): warning C4244: “参数”: 从“wchar_t”转换到“const _Elem”，可能丢失数据
+          with
+          [
+              _Elem=char
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2586): message : 查看对正在编译的函数 模板 实例化“void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)”的引用
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2586): message : 查看对正在编译的函数 模板 实例化“void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(_Iter,const _Iter,std::input_iterator_tag)”的引用
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2566): message : 查看对正在编译的函数 模板 实例化“void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)”的引用
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xstring(2566): message : 查看对正在编译的函数 模板 实例化“void std::basic_string<char,std::char_traits<char>,std::allocator<char>>::_Construct<wchar_t*>(const _Iter,const _Iter,std::forward_iterator_tag)”的引用
+          with
+          [
+              _Iter=wchar_t *
+          ]
+C:\Users\Teages\source\repos\vTabletDriver\vTabletDriver\HIDDevice.cpp(207): message : 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)”的引用
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+C:\Users\Teages\source\repos\vTabletDriver\vTabletDriver\HIDDevice.cpp(207): message : 查看对正在编译的函数 模板 实例化“std::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::_String_iterator<std::_String_val<std::_Simple_types<_Elem>>>,0>(_Iter,_Iter,const _Alloc &)”的引用
+          with
+          [
+              _Elem=wchar_t,
+              _Iter=std::_String_iterator<std::_String_val<std::_Simple_types<wchar_t>>>,
+              _Alloc=std::allocator<char>
+          ]
+  OutputVMultiDigitizer.cpp
+  VMulti.cpp
+  vTabletDriver.cpp
+  正在生成代码...
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidP_GetCaps@8，函数 "public: bool __thiscall HIDDevice::OpenDevice(void * *,unsigned short,unsigned short,unsigned short,unsigned short,bool)" (?OpenDevice@HIDDevice@@QAE_NPAPAXGGGG_N@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetAttributes@8，函数 "public: bool __thiscall HIDDevice::OpenDevice(void * *,unsigned short,unsigned short,unsigned short,unsigned short,bool)" (?OpenDevice@HIDDevice@@QAE_NPAPAXGGGG_N@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetHidGuid@4，函数 "public: bool __thiscall HIDDevice::OpenDevice(void * *,unsigned short,unsigned short,unsigned short,unsigned short,bool)" (?OpenDevice@HIDDevice@@QAE_NPAPAXGGGG_N@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetPreparsedData@8，函数 "public: bool __thiscall HIDDevice::OpenDevice(void * *,unsigned short,unsigned short,unsigned short,unsigned short,bool)" (?OpenDevice@HIDDevice@@QAE_NPAPAXGGGG_N@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_FreePreparsedData@4，函数 "public: bool __thiscall HIDDevice::OpenDevice(void * *,unsigned short,unsigned short,unsigned short,unsigned short,bool)" (?OpenDevice@HIDDevice@@QAE_NPAPAXGGGG_N@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetFeature@12，函数 "public: bool __thiscall HIDDevice::GetFeature(void *,int)" (?GetFeature@HIDDevice@@QAE_NPAXH@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_SetFeature@12，函数 "public: bool __thiscall HIDDevice::SetFeature(void *,int)" (?SetFeature@HIDDevice@@QAE_NPAXH@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetManufacturerString@12，函数 "bool __cdecl GetHIDStrings(void *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *)" (?GetHIDStrings@@YA_NPAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@11@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetProductString@12，函数 "bool __cdecl GetHIDStrings(void *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *)" (?GetHIDStrings@@YA_NPAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@11@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetIndexedString@16，函数 "public: int __thiscall HIDDevice::StringRequest(unsigned char,unsigned char *,int)" (?StringRequest@HIDDevice@@QAEHEPAEH@Z) 中引用了该符号
+HIDDevice.obj : error LNK2019: 无法解析的外部符号 _HidD_GetSerialNumberString@12，函数 "bool __cdecl GetHIDStrings(void *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > *)" (?GetHIDStrings@@YA_NPAXPAV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@11@Z) 中引用了该符号
+C:\Users\Teages\source\repos\vTabletDriver\Debug\vTabletDriver.exe : fatal error LNK1120: 11 个无法解析的外部命令
